@@ -2,14 +2,13 @@ package com.example.todo;
 
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import javafx.scene.input.KeyCode;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
@@ -48,22 +47,28 @@ public class TodoUI extends UI {
         formLayout.setSpacing(true);
         formLayout.setWidth("80%");
 
-        TextField taskfield = new TextField();
-        taskfield.setWidth("100%");
+        TextField taskField = new TextField();
+        taskField.setWidth("100%");
+
+        new Binder<Todo>().forField(taskField)
+                .withValidator(str -> str.length() > 5, "Must be more than 4 chars")
+                .withValidator(str -> str.length() < 15, "Too big!")
+                .bind(Todo::getText, Todo::setText);
+
         Button addButton = new Button("");
         addButton.setIcon(VaadinIcons.PLUS);
         addButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 
-        formLayout.addComponentsAndExpand(taskfield);
+        formLayout.addComponentsAndExpand(taskField);
         formLayout.addComponents(addButton);
 
         addButton.addClickListener(clickEvent -> {
-            todoList.add(new Todo(taskfield.getValue()));
-            Notification.show(taskfield.getValue()+" added successfully!");
-            taskfield.clear();
-            taskfield.focus();
+            todoList.add(new Todo(taskField.getValue()));
+            Notification.show(taskField.getValue()+" added successfully!");
+            taskField.clear();
+            taskField.focus();
         });
-        taskfield.focus();
+        taskField.focus();
         addButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
         layout.addComponent(formLayout);

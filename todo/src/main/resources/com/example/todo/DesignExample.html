@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-form-layout responsive width="436px" height="570px" margin>
+   <vaadin7-text-field caption="First Name" width="185px" _id="firstName"></vaadin7-text-field>
+   <vaadin7-text-field caption="Last Name" _id="lastName"></vaadin7-text-field>
+   <vaadin7-text-field caption="Email" input-prompt="" _id="email"></vaadin7-text-field>
+   <vaadin7-native-select columns="9" caption="Status" width="99px" _id="status">
+    <option>Active</option>
+    <option>Inactive</option>
+    <option>Away</option>
+   </vaadin7-native-select>
+   <vaadin7-date-field caption="Birthday" _id="birthDate"></vaadin7-date-field>
+   <vaadin-horizontal-layout>
+    <vaadin-button style-name="primary" plain-text _id="save">
+      Save 
+    </vaadin-button>
+    <vaadin-button style-name="danger" plain-text _id="delete">
+      Delete 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-tab-sheet size-auto>
+    <tab caption="Tab" selected>
+     <vaadin-vertical-layout size-auto>
+      <vaadin7-text-field caption="First Name" width="185px" _id="firstName1"></vaadin7-text-field>
+      <vaadin7-text-field caption="Last Name" _id="lastName1"></vaadin7-text-field>
+     </vaadin-vertical-layout>
+    </tab>
+    <tab caption="Tab">
+     <vaadin-vertical-layout size-auto></vaadin-vertical-layout>
+    </tab>
+    <tab caption="Tab">
+     <vaadin-vertical-layout size-auto></vaadin-vertical-layout>
+    </tab>
+   </vaadin-tab-sheet>
+  </vaadin-form-layout>
+ </body>
+</html>
